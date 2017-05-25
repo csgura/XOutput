@@ -395,14 +395,14 @@ namespace XOutput
             {
                 if (input > centerPoint)
                 {
-                    //Steering Right
-                    returnVal += deadZoneCompensation;
-                }
+					//Steering Right
+					returnVal = (int)Math.Round(1.0 * (input - centerPoint) * (255 - centerPoint - deadZoneCompensation) / (255 - centerPoint) + centerPoint + deadZoneCompensation);
+				}
                 else if (input < centerPoint)
                 {
-                    //Steering Left
-                    returnVal -= deadZoneCompensation;
-                }
+					//Steering Left
+					returnVal = (int)Math.Round(1.0 * input * (centerPoint - deadZoneCompensation) / centerPoint);
+				}
 
                 //Full Lock
                 if (returnVal > 255)
